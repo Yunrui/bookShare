@@ -1,6 +1,9 @@
 <?php
     // Modify this flag, then we can switch between Local and SAE;
     define('RunningMode', 'SAE');
+	define( "WB_AKEY" , '1170269439' );
+	define( "WB_SKEY" , 'b7574ba23d56ff27b156ee1923177ee7' );
+	define( "WB_CALLBACK_URL" , 'http://libinfriends.sinaapp.com/callback.php');
 
     if (RunningMode == 'Local')
     {
