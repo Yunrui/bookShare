@@ -1,6 +1,6 @@
 <?php
     // Modify this flag, then we can switch between Local and SAE;
-    define('RunningMode', 'SAE');
+    define('RunningMode', 'Local');
 
     if (RunningMode == 'Local')
     {

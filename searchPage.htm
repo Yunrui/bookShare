@@ -23,7 +23,13 @@
 			<div data-role="content">	
 
 				<div class="content-primary">
-					<h2>Search Book Page</h2>
+					<div data-role="fieldcontain">
+						<input type="text" name="search" id="search" value=""  />
+						<a href="searchBook.php" data-role="button" data-inline="true">搜索</a> 
+					</div>	
+
+					<ul data-role="listview"  data-theme="c" id="searchBookList">
+					</ul>
 				</div><!--/content-primary -->		
 		
 				<div class="content-secondary">
@@ -105,6 +111,7 @@
 
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		<script src="js/searchPage.js"></script>
 	</body>
 </html>
 
