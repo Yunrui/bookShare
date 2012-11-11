@@ -18,7 +18,7 @@
     }
     
     // $TODO: SQL injection detect
-	// $TODO: 3 LEFT JOIN is crazy, which search type are all ALL. We must do performance tuning here!!!!!
+	// $TODO: 3 LEFT JOIN is crazy, which search type are all ALL. We must do performance tuning here!!!!! DO IT AFTER FINISHING THE RENTING FEATURE.
     // $TODO: what kind of information is enough? do we need to return owner name and/or reader name?
     // And, if a book has been registered twice by my different friends, what should we do here? 
     // display duplicated or only display those which are available?
@@ -41,6 +41,10 @@
 				) book
 				On bookOwn.bookId = book.id
             ";
+	
+    if (!empty($searchText)){
+		$sql .= " WHERE book.bookName LIKE '%" . $searchText . "%' OR book.description LIKE '%" . $searchText . "%' OR myFriend.displayName LIKE '%" . $searchText . "%'";
+	}
 
     $zzsql = new ZZSql();
     $data = $zzsql->getData($sql);
