@@ -58,7 +58,8 @@
 			<div data-role="content">	
 
 				<div class="content-primary">
-					<h2>MyBook Page</h2>
+					<ul data-role="listview"  data-theme="c" id="myBookList">
+					</ul>
 				</div><!--/content-primary -->		
 		
 				<div class="content-secondary">

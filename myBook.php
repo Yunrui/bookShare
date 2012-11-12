@@ -17,9 +17,14 @@
     }
     
     // $TODO: SQL injection detect
-    $sql = "SELECT id, bookId, readerId
+    $sql = "SELECT bookOwn.id, bookOwn.bookId, book.bookName,book.img,book.author,book.isbn,book.pages,book.publisher,book.price,book.description
                 FROM bookOwn
-                WHERE ownerId = '$userId'";
+				INNER JOIN
+				(
+					SELECT * from book
+				) book
+				ON bookOwn.bookId = book.Id
+                WHERE bookOwn.ownerId = '$userId'";
 
     $zzsql = new ZZSql();
     $data = $zzsql->getData($sql);
