@@ -1,4 +1,5 @@
 
+
 // $TODO: consider move this plugin to separate file but build all js together
 // jQuery plugin for condition which is useful in our app.
 (function($){
@@ -9,7 +10,6 @@
   };
   
 })(jQuery);
-
 
 
 // Not pollute global namespace
@@ -56,8 +56,45 @@
 						alert(jqXHR + textStatus + errorThrown);
 					},
 		});
+
 	});
 
+
+	$(document).delegate("#addBook", "pageinit", function() {
+
+		$("#searchDouban").bind("change", function(event, ui) {
+			// $TODO: trim input later
+			var keyword = $("#searchDouban").val();
+			if (keyword)
+			{
+				var link = "http://api.douban.com/v2/book/search?q=" + encodeURIComponent($("#searchDouban").val()) + "&start=0&count=5&alt=xd&callback=?";
+				$.getJSON(link, function(result){
+					var books = result.books;
+					$("#searchDoubanBookList li").remove();
+
+					for(var i = 0; i < books.length; i++) {
+						$("<li data-icon='plus'/>").append(
+							$("<a  />").append(
+								$("<table />")
+									.append($("<tr style='vertical-align:top;'/>")
+										.append($("<td />").append($("<img src='" + books[i].images["small"] + "' />")))
+										.append($("<td style='padding: 8px;width:100%;height:100%;'/>")
+											.append($("<div/>")
+												.append($("<p>书名: " + books[i].title + "</p>"))
+												// $TODO: isFunction detect
+												.iff(books[i].author != undefined && books[i].author.length != 0)
+													.append($("<p>作者: " + books[i].author[0] + "</p>"))  
+													.end()
+												.append($("<p>页数: " + books[i].pages + "</p>"))
+												.append($("<p>出版社: " + books[i].publisher + "</p>"))
+												.append($("<p>价格: " + books[i].price + "</p>")))))))
+						.appendTo($("#searchDoubanBookList"));
+					}	
+					$("#searchDoubanBookList").listview('refresh');
+				});
+			}
+		});
+	});
 
 	function refreshSearchBookListView(result, listId)
 	{

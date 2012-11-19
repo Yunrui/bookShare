@@ -11,7 +11,7 @@
 		
 		<!-- 
 			$TODO: how can I remove those fucking stupid duplicated secondary navigations?  
-			--- Consider write an jQuery plugin which could just refresh part of UI later.
+			Consider write an jQuery plugin which could just refresh part of UI later.
 		-->
 		<!-- searchBook Page -->
 		<div data-role="page" class="type-interior" id="searchBook">
@@ -48,7 +48,7 @@
 
 		</div><!-- /page -->
 
-		<!-- searchBook Page -->
+		<!-- myBook Page -->
 		<div data-role="page" class="type-interior" id="myBook">
 
 			<div data-role="header" data-theme="e">
@@ -58,8 +58,15 @@
 			<div data-role="content">	
 
 				<div class="content-primary">
+
+					<!-- $TODO: setting footer here definitely a workaround -->
+					<div data-role="footer" class="ui-bar" data-theme="e">
+						<a href="#addBook" data-role="button" data-icon="plus" data-rel="dialog">添加</a>
+					</div> 
+					<br />
 					<ul data-role="listview"  data-theme="c" id="myBookList">
 					</ul>
+
 				</div><!--/content-primary -->		
 		
 				<div class="content-secondary">
@@ -105,6 +112,30 @@
 							</ul>
 					</div>
 				</div>				
+			</div><!-- /content -->
+
+		</div><!-- /page -->
+
+
+		<!-- addBook Page -->
+		<div data-role="page" id="addBook">
+
+			<div data-role="header" data-theme="d" style="max-width:630px;width:630px;">
+				<h1>添加图书</h1>
+			</div>
+
+			<div data-role="content" data-theme="c" style="max-width:600px;width:600px;height:480px">	
+
+				<div>
+					<label for="searchDouban">为了能找到您的图书，请输入完整的书名：</label>
+					<div data-role="fieldcontain" >
+						<input type="search" name="searchDouban" id="searchDouban" data-theme="e"/>
+					</div>
+					<br/>
+					<ul data-role="listview"  data-theme="c" id="searchDoubanBookList">
+					</ul>	
+				</div>	
+					
 			</div><!-- /content -->
 
 		</div><!-- /page -->
