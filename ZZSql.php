@@ -48,6 +48,23 @@ class ZZSql
             $this->masterConnection = NULL;
         }
     }
+
+	public function escapeInput($value)
+	{
+		// If it's true, PHP automatically add slash for special charactor
+		if (get_magic_quotes_gpc())
+		{
+			$value = stripslashes($value);
+		}
+
+		// 如果不是数字则加引号
+		if (!is_numeric($value))
+		{
+			$value = mysql_escape_string($value);
+		}
+		return $value;
+	}
+
     
     private function openSlave()
     {

@@ -4,10 +4,12 @@
     require_once('ZZSql.php');
     
     header("Cache-Control: no-cache, must-revalidate");
-        
+
+    $zzsql = new ZZSql();        
+
     //get the userId parameter from URL  
-    $bookId = $_REQUEST["bookId"];   
-    $userId = $_REQUEST["userId"];           
+    $bookId = $zzsql->escapeInput($_REQUEST["bookId"]);   
+    $userId = $zzsql->escapeInput($_REQUEST["userId"]);           
     
     if (empty($bookId) or empty($userId))
     {
@@ -15,10 +17,8 @@
         return;
     }
     
-    // $TODO: SQL injection detect
     $exist = "SELECT * FROM bookOwn WHERE bookId = '$bookId' AND ownerId = '$userId'";
     
-    $zzsql = new ZZSql();
     $data = $zzsql->getData($exist);
                 
     if(!count($data))
