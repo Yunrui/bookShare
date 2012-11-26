@@ -16,18 +16,17 @@
     $pages = $zzsql->escapeInput($_REQUEST["pages"]);    
     $publisher = $zzsql->escapeInput($_REQUEST["publisher"]);    
     $price = $zzsql->escapeInput($_REQUEST["price"]);    
-    $description = $zzsql->escapeInput($_REQUEST["description"]);       
+    $description = $zzsql->escapeInput($_REQUEST["description"]);  
+    $userId = $zzsql->escapeInput($_REQUEST["userId"]);     
     
-    if (empty($bookId) or empty($bookName))
+    if (empty($bookId) or empty($bookName) or empty($userId))
     {
         // $TODO: we need more accurate error message in this case;
+		// Consider structured Result Contract, with error state
         return;
     }
-    
-    $exist = "SELECT * FROM book WHERE id = '$bookId'";
-    $data = $zzsql->getData($exist);
-                
-    if(!count($data))
+                  
+    if($zzsql->notExist("SELECT * FROM book WHERE id = '$bookId'"))
     {
         $addBook = "INSERT INTO book (
                     id,
@@ -54,6 +53,23 @@
 
         $zzsql->run($addBook);
     }
+
+	// Add BookOwn Table		            
+	if($zzsql->notExist("SELECT * FROM bookOwn WHERE bookId = '$bookId' AND ownerId = '$userId'"))
+	{
+	    $addBookOwn = "INSERT INTO bookOwn (
+		                ownerId,
+		                bookId,
+		                waitingList
+		            )
+		            VALUES (
+		                '$userId',
+		                '$bookId',
+		                0
+		            )";
+
+	    $zzsql->run($addBookOwn);
+	}
     
     $zzsql->close();
 ?>

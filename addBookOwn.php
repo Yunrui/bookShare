@@ -16,12 +16,8 @@
         // $TODO: we need more accurate error message in this case;
         return;
     }
-    
-    $exist = "SELECT * FROM bookOwn WHERE bookId = '$bookId' AND ownerId = '$userId'";
-    
-    $data = $zzsql->getData($exist);
                 
-    if(!count($data))
+	if($zzsql->notExist("SELECT * FROM bookOwn WHERE bookId = '$bookId' AND ownerId = '$userId'"))
     {
         $addBookOwn = "INSERT INTO bookOwn (
                     ownerId,

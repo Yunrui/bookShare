@@ -1,6 +1,8 @@
+// ------------------------------------------------------------------------------
+// Helper Plugin starting from here
+// $TODO: consider move those plugins to separate files but build all js together
+// ------------------------------------------------------------------------------
 
-
-// $TODO: consider move this plugin to separate file but build all js together
 // jQuery plugin for condition which is useful in our app.
 (function($){
   $.fn.iff = function(test) {
@@ -175,6 +177,7 @@
 							// $TODO: error handling
 							$.post("addBook.php", 
 									{ 
+										userId:1,
 										bookId:book.id, 
 										bookName:book.title, 
 										img:book.images.medium, 
@@ -186,26 +189,11 @@
 										description:book.summary,
 									}, 
 									function(data) { 
-										// $TODO: does PHP provide a structure approach to notify status instead of string?
 										if(!data) {
-											$.post("addBookOwn.php", 
-													{
-														bookId:book.id,
-														userId:1,
-													},
-													function(data) {
-														if(!data) {
-															// $TODO: nicely close this dialog or clear the list since already added.
-															$("#searchDoubanBookList li").remove();
-														}
-														else {
-															alert (data);
-														}
-													}
-											);
+											// $TODO: nicely close this dialog or clear the list since already added.
+											$("#searchDoubanBookList li").remove();
 										}
 										else {
-											//$TODO: error happens, we need a nice way to provide error message
 											alert (data);
 										}
 									}

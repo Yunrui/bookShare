@@ -65,6 +65,12 @@ class ZZSql
 		return $value;
 	}
 
+	public function notExist($sql)
+	{	
+		$data = $this->getData($sql);
+		return !count($data);
+	}
+
     
     private function openSlave()
     {
