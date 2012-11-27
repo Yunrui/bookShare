@@ -7,16 +7,18 @@
     // how many requests against the same userId and how frequently we need 
     // to refresh book list. Ideally, we'd better put cache closer to users.
     header("Cache-Control: no-cache, must-revalidate");
+
+    $zzsql = new ZZSql();
+    $ret = new WSC();
         
     //get the userId parameter from URL
-    $userId = $_REQUEST["userId"];   
+    $userId = $zzsql->escapeInput($_REQUEST["userId"]);   
     
     if (empty($userId))
     {
-        return;
+        die($ret->wrapError("Please logon first before triggering this request."));
     }
     
-    // $TODO: SQL injection detect
     $sql = "SELECT bookOwn.id, bookOwn.bookId, book.bookName,book.img,book.author,book.isbn,book.pages,book.publisher,book.price,book.description
                 FROM bookOwn
 				INNER JOIN
@@ -26,9 +28,8 @@
 				ON bookOwn.bookId = book.Id
                 WHERE bookOwn.ownerId = '$userId'";
 
-    $zzsql = new ZZSql();
     $data = $zzsql->getData($sql);
     $zzsql->close();
     
-    echo json_encode($data);
+    echo $ret->setOutput ($data);
 ?>

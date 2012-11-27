@@ -1,6 +1,7 @@
 <?php
 
 require_once('Config.php');
+require_once('WebServiceContract.php');
 
 class ZZSql
 {
@@ -9,12 +10,15 @@ class ZZSql
     private $error;
     private $errno;
  
-    
+ 	public function ZZSql()
+	{
+		$this->ret = new WSC();
+	}
+   
     public function getData($sql)
     {
         $mysql_s = $this->openSlave();
-        
-        $data = mysqli_query($mysql_s, $sql) or die('ERROR: querying database - ' . mysqli_error($mysql_s));
+        $data = mysqli_query($mysql_s, $sql) or die($this->ret->wrapError('ERROR: querying database - ' . mysqli_error($mysql_s)));
     
         $all = Array();
         $i = 0;
@@ -31,7 +35,7 @@ class ZZSql
     public function run($sql)
     {
         $mysql = $this->openMaster();        
-        mysqli_query($mysql, $sql) or die('ERROR: updating database - ' . mysqli_error($mysql));
+        mysqli_query($mysql, $sql) or die($ret->wrapError('ERROR: updating database - ' . mysqli_error($mysql)));
     }
     
     public function close()
@@ -77,7 +81,7 @@ class ZZSql
         // $TODO: do we need to cache connection cross session?
         if (empty($this->slaveConnection))
         {
-            $this->slaveConnection = mysqli_connect(DB_HOST_S, DB_USER, DB_PASSWORD, DB_NAME) or die('ERROR: connecting to MySQL server - ' . mysqli_connect_errno());
+            $this->slaveConnection = mysqli_connect(DB_HOST_S, DB_USER, DB_PASSWORD, DB_NAME) or die($this->ret->wrapError('ERROR: connecting to MySQL server - ' . mysqli_connect_errno()));
         }
         
         return $this->slaveConnection;
@@ -87,7 +91,7 @@ class ZZSql
     {
         if (empty($this->masterConnection))
         {
-            $this->masterConnection = mysqli_connect(DB_HOST_M, DB_USER, DB_PASSWORD, DB_NAME) or die('ERROR: connecting to MySQL server - ' . mysqli_connect_errno());
+            $this->masterConnection = mysqli_connect(DB_HOST_M, DB_USER, DB_PASSWORD, DB_NAME) or die($this->ret->wrapError('ERROR: connecting to MySQL server - ' . mysqli_connect_errno()));
         }
         
         return $this->masterConnection;

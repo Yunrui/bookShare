@@ -6,6 +6,7 @@
     header("Cache-Control: no-cache, must-revalidate");
         
     $zzsql = new ZZSql();
+    $ret = new WSC();
 
     //get the userId parameter from URL  
     $bookId = $zzsql->escapeInput($_REQUEST["bookId"]);   
@@ -21,9 +22,7 @@
     
     if (empty($bookId) or empty($bookName) or empty($userId))
     {
-        // $TODO: we need more accurate error message in this case;
-		// Consider structured Result Contract, with error state
-        return;
+		die($ret->wrapError("Please logon first before triggering this request and the request must specify bookId and bookName."));
     }
                   
     if($zzsql->notExist("SELECT * FROM book WHERE id = '$bookId'"))
@@ -72,4 +71,5 @@
 	}
     
     $zzsql->close();
+	echo $ret->setOutput ("");
 ?>

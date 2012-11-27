@@ -104,12 +104,22 @@
 			this.element.listview('refresh');	
 		},
 
+		update: function(self, result) {
+			if (result.status == 0) {
+				// Cannot use "this", since this points to the caller.
+				self.refresh(result.output);
+			}
+			else {
+				//$TODO: do nice error popup later
+				alert(result.output);
+			}
+		},
+
 		getData: function(url, data) {
 			var self = this;
 			$.getJSON(url, data,
 				function(result) {
-					// Cannot use "this", since this points to the caller.
-					self.refresh(result);
+					self.update(self, result);
 				}
 			);
 		},
@@ -188,28 +198,38 @@
 										price:book.price,
 										description:book.summary,
 									}, 
-									function(data) { 
-										if(!data) {
+									function(result) { 
+										if(result.status == 0) {
 											// $TODO: nicely close this dialog or clear the list since already added.
 											$("#searchDoubanBookList li").remove();
 										}
 										else {
-											alert (data);
+											alert (result.output);
 										}
-									}
+									},
+									"json"
 							);
 						})
 				.appendTo(this.element);
 			}	
+		},
+
+		update: function(self, result) {
+			if (result) {
+				self.refresh(result);
+			}
 		}
 	});
 
+	// NOTE: seems that not necessary to have auto-refresh for this page 
+	// since people on this page completely leveraging search box which 
+	// returns fresh data always.
 	$(document).delegate("#searchBook", "pageinit", function() {
 		var searchBookViewModel = new BookViewModel("searchBookList");
 		searchBookViewModel.getData("searchBook.php", { userId: 1, });
 
 		$("#search").bind("change", function(event, ui) {
-			searchBookViewModel.getData("searchBook.php", { userId: 1, searchText: $("#search").val()});
+			searchBookViewModel.getData("searchBook.php", { userId: 1, searchText: $.trim($("#search").val())});
 		});
 	});
 
@@ -224,11 +244,10 @@
 		var addBookViewModel = new AddBookViewModel("searchDoubanBookList");
 
 		$("#searchDouban").bind("change", function(event, ui) {
-			// $TODO: trim input
-			var keyword = $("#searchDouban").val();
+			var keyword = $.trim($("#searchDouban").val());
 			if (keyword)
 			{
-				var link = "http://api.douban.com/v2/book/search?q=" + encodeURIComponent($("#searchDouban").val()) + "&start=0&count=5&alt=xd&callback=?";
+				var link = "http://api.douban.com/v2/book/search?q=" + encodeURIComponent(keyword) + "&start=0&count=5&alt=xd&callback=?";
 				addBookViewModel.getData(link, {});
 			}
 		});
