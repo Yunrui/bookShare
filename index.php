@@ -96,7 +96,7 @@
 			<div data-role="content">	
 
 				<div class="content-primary">
-					<h2>My Friends Page</h2>
+					<h2>TBD</h2>
 				</div><!--/content-primary -->		
 		
 				<div class="content-secondary">
