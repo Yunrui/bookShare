@@ -13,11 +13,12 @@
     $ret = new WSC();
         
     //get the userId parameter from URL
-    $userId = $zzsql->escapeInput($_REQUEST["userId"]);   
+    $userId = $zzsql->escapeInput($_COOKIE["userId"]);   
     $searchText = $zzsql->escapeInput($_REQUEST["searchText"]);  
  
     if (empty($userId))
     {
+		//$TODO: after integrating with logon page, we should redirect to logon page, or should have a separate .php for authentication?
 		die($ret->wrapError("Please logon first before triggering this request."));
     }
 	    

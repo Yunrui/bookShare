@@ -12,7 +12,7 @@
     $ret = new WSC();
         
     //get the userId parameter from URL
-    $userId = $zzsql->escapeInput($_REQUEST["userId"]);   
+    $userId = $zzsql->escapeInput($_COOKIE["userId"]);   
     
     if (empty($userId))
     {
