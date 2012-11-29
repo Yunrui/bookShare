@@ -17,7 +17,6 @@
 	<head>
 		<title>Book Share</title>
 		
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 		
@@ -101,10 +100,11 @@
 			<div >
 				<div class = "HeaderLogo">
 					<img src="images/bookShareLogo.png" class = "HeadImage" />
-				</div>				
+				</div>
+				
 				
 				<div class = "HeaderLogin">
-					<a href="<?=$code_url?>"><img src="images/weibo_login.png" title="点击进入授权页面" alt="点击进入授权页面"  class = "HeadImage" /></a>
+					<a href="<?=$code_url?>"><img src="images/weibo_login.png" title="���������Ȩҳ��" alt="���������Ȩҳ��"  class = "HeadImage" /></a>
 				</div>
 				
 				<br/>
@@ -112,36 +112,36 @@
 			
 			<div class="BodyDiv" align=center >
 				
-				<h1>BookShare，分享您的图书：</h1>
+				<h1>BookShare����������ͼ�飺</h1>
 				
 				<div class = "ShareDiv" >
 					
 					<img src="images/easy.png" class = "ContentImage" />
 					
-					<h2>分享</h2>
+					<h2>����</h2>
 					
 					<p class = "ContentPara">					
-						和您的好友分享书籍、分享知识
+						�����ĺ��ѷ����鼮������֪ʶ
 					</p>
 				</div>
 				
 				<div class = "EasyDiv">
 					<img src="images/easy.png" class = "ContentImage" />
 					
-					<h2>便捷</h2>
+					<h2>���</h2>
 					
 					<p class = "ContentPara">					
-						任何时间、任何地点、任何终端，一样的服务体验
+						�κ�ʱ�䡢�κεص㡢�κ��նˣ�һ���ķ�������
 					</p>
 				</div>
 				
 				<div class = "SafeDiv">
 					<img src="images/easy.png" class = "ContentImage" />
 					
-					<h2>安全</h2>
+					<h2>��ȫ</h2>
 					
 					<p class = "ContentPara">					
-						只有您的好友，才能和您进行分享
+						ֻ�����ĺ��ѣ����ܺ������з���
 					</p>
 				</div>
 				

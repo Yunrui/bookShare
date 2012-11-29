@@ -18,7 +18,7 @@
     $publisher = $zzsql->escapeInput($_REQUEST["publisher"]);    
     $price = $zzsql->escapeInput($_REQUEST["price"]);    
     $description = $zzsql->escapeInput($_REQUEST["description"]);  
-    $userId = $zzsql->escapeInput($_REQUEST["userId"]);     
+    $userId = $zzsql->escapeInput($_COOKIE["userId"]);     
     
     if (empty($bookId) or empty($bookName) or empty($userId))
     {
