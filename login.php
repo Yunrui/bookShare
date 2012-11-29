@@ -20,7 +20,6 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-		<link rel="stylesheet" href="css/jqm-docs.css" />
 		
 		<style type="text/css">
 		
@@ -101,12 +100,11 @@
 			
 			<div >
 				<div class = "HeaderLogo">
-					<img src="photo/bookShareLogo.png" class = "HeadImage" />
-				</div>
-				
+					<img src="images/bookShareLogo.png" class = "HeadImage" />
+				</div>				
 				
 				<div class = "HeaderLogin">
-					<a href="<?=$code_url?>"><img src="photo/weibo_login.png" title="点击进入授权页面" alt="点击进入授权页面"  class = "HeadImage" /></a>
+					<a href="<?=$code_url?>"><img src="images/weibo_login.png" title="点击进入授权页面" alt="点击进入授权页面"  class = "HeadImage" /></a>
 				</div>
 				
 				<br/>
@@ -118,7 +116,7 @@
 				
 				<div class = "ShareDiv" >
 					
-					<img src="photo/easy.png" class = "ContentImage" />
+					<img src="images/easy.png" class = "ContentImage" />
 					
 					<h2>分享</h2>
 					
@@ -128,7 +126,7 @@
 				</div>
 				
 				<div class = "EasyDiv">
-					<img src="photo/easy.png" class = "ContentImage" />
+					<img src="images/easy.png" class = "ContentImage" />
 					
 					<h2>便捷</h2>
 					
@@ -138,7 +136,7 @@
 				</div>
 				
 				<div class = "SafeDiv">
-					<img src="photo/easy.png" class = "ContentImage" />
+					<img src="images/easy.png" class = "ContentImage" />
 					
 					<h2>安全</h2>
 					
@@ -157,7 +155,6 @@
 		
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-		<script src="js/searchPage.js"></script>
 		
 		<script>
 

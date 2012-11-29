@@ -1,8 +1,8 @@
 <!DOCTYPE html> 
 <html> 
 	<head> 
-		<title>我的图书馆</title> 
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>�ҵ�ͼ���</title> 
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 		<link rel="stylesheet" href="css/jqm-docs.css" />
@@ -18,7 +18,7 @@
 		<div data-role="page" class="type-interior" id="searchBook">
 
 			<div data-role="header" data-theme="e">
-				<h1>我的图书馆</h1>
+				<h1>�ҵ�ͼ���</h1>
 			</div>
 
 			<div data-role="content">	
@@ -39,9 +39,9 @@
 							<h3>More in this section</h3>
 					
 							<ul data-role="listview"  data-theme="c" data-dividertheme="d">
-								<li data-theme="a"><a href="#searchBook">搜索图书</a></li>
-								<li><a href="#myBook">我的图书</a></li>	
-								<li><a href="#myFriend">我的好友</a></li>	
+								<li data-theme="a"><a href="#searchBook">����ͼ��</a></li>
+								<li><a href="#myBook">�ҵ�ͼ��</a></li>	
+								<li><a href="#myFriend">�ҵĺ���</a></li>	
 							</ul>
 					</div>
 				</div>				
@@ -53,7 +53,7 @@
 		<div data-role="page" class="type-interior" id="myBook">
 
 			<div data-role="header" data-theme="e">
-				<h1>我的图书馆</h1>
+				<h1>�ҵ�ͼ���</h1>
 			</div>
 
 			<div data-role="content">	
@@ -62,7 +62,7 @@
 
 					<!-- $TODO: setting footer here definitely a workaround -->
 					<div data-role="footer" class="ui-bar" data-theme="e">
-						<a href="#addBook" data-role="button" data-icon="plus" data-rel="dialog">添加</a>
+						<a href="#addBook" data-role="button" data-icon="plus" data-rel="dialog">����</a>
 					</div> 
 					<br />
 					<ul data-role="listview"  data-theme="c" id="myBookList">
@@ -77,9 +77,9 @@
 							<h3>More in this section</h3>
 					
 							<ul data-role="listview"  data-theme="c" data-dividertheme="d">
-								<li><a href="#searchBook">搜索图书</a></li>
-								<li data-theme="a"><a href="#myBook">我的图书</a></li>	
-								<li><a href="#myFriend">我的好友</a></li>	
+								<li><a href="#searchBook">����ͼ��</a></li>
+								<li data-theme="a"><a href="#myBook">�ҵ�ͼ��</a></li>	
+								<li><a href="#myFriend">�ҵĺ���</a></li>	
 							</ul>
 					</div>
 				</div>				
@@ -91,7 +91,7 @@
 		<div data-role="page" class="type-interior" id="myFriend">
 
 			<div data-role="header" data-theme="e">
-				<h1>我的图书馆</h1>
+				<h1>�ҵ�ͼ���</h1>
 			</div>
 
 			<div data-role="content">	
@@ -107,9 +107,9 @@
 							<h3>More in this section</h3>
 					
 							<ul data-role="listview"  data-theme="c" data-dividertheme="d">
-								<li><a href="#searchBook">搜索图书</a></li>
-								<li><a href="#myBook">我的图书</a></li>	
-								<li data-theme="a"><a href="#myFriend">我的好友</a></li>	
+								<li><a href="#searchBook">����ͼ��</a></li>
+								<li><a href="#myBook">�ҵ�ͼ��</a></li>	
+								<li data-theme="a"><a href="#myFriend">�ҵĺ���</a></li>	
 							</ul>
 					</div>
 				</div>				
@@ -122,13 +122,13 @@
 		<div data-role="page" id="addBook">
 
 			<div data-role="header" data-theme="d" style="max-width:630px;width:630px;">
-				<h1>添加图书</h1>
+				<h1>����ͼ��</h1>
 			</div>
 
 			<div data-role="content" data-theme="c" style="max-width:600px;width:600px;height:480px">	
 
 				<div>
-					<label for="searchDouban">为了能找到您的图书，请输入完整的书名：</label>
+					<label for="searchDouban">Ϊ�����ҵ�����ͼ�飬������������������</label>
 					<div data-role="fieldcontain" >
 						<input type="search" name="searchDouban" id="searchDouban" data-theme="e"/>
 					</div>
