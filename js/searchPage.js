@@ -871,7 +871,9 @@
 						alert(result.output);
 					}
 				}
-			);
+			).error(function(data) { 
+				alert(data); 
+			});
 		},
 	});
 
@@ -951,6 +953,7 @@
 											// $TODO: nicely close this dialog or clear the list since already added.
 											// $TODO: When anything added successfully, we should refresh MyBook page also.
 											$("#searchDoubanBookList li").remove();
+											$.growlUI('操作已成功', '该图书已添加至您的书单！'); 
 										}
 										else {
 											alert (result.output);

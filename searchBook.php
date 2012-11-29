@@ -1,8 +1,10 @@
 <?php
  
     require_once('Config.php');
+    require_once('Authentication.php');
     require_once('WebServiceContract.php');
     require_once('ZZSql.php');
+	
     
     // $TODO: we need to consider this attribuate later after understanding
     // how many requests against the same userId and how frequently we need 
@@ -15,12 +17,6 @@
     //get the userId parameter from URL
     $userId = $zzsql->escapeInput($_COOKIE["userId"]);   
     $searchText = $zzsql->escapeInput($_REQUEST["searchText"]);  
- 
-    if (empty($userId))
-    {
-		//$TODO: after integrating with logon page, we should redirect to logon page, or should have a separate .php for authentication?
-		die($ret->wrapError("Please logon first before triggering this request."));
-    }
 	    
 	// $TODO: 3 LEFT JOIN is crazy, which search type are all ALL. We must do performance tuning here!!!!! DO IT AFTER FINISHING THE RENTING FEATURE.
     // $TODO: what kind of information is enough? do we need to return owner name and/or reader name?
