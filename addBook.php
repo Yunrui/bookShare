@@ -2,6 +2,7 @@
  
     require_once('Config.php');
     require_once('ZZSql.php');
+    require_once('Authentication.php');
     
     header("Cache-Control: no-cache, must-revalidate");
         
@@ -20,9 +21,9 @@
     $description = $zzsql->escapeInput($_REQUEST["description"]);  
     $userId = $zzsql->escapeInput($_COOKIE["userId"]);     
     
-    if (empty($bookId) or empty($bookName) or empty($userId))
+    if (empty($bookId) or empty($bookName))
     {
-		die($ret->wrapError("Please logon first before triggering this request and the request must specify bookId and bookName."));
+		die($ret->wrapError("The request must specify bookId and bookName."));
     }
                   
     if($zzsql->notExist("SELECT * FROM book WHERE id = '$bookId'"))

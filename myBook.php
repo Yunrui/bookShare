@@ -2,6 +2,7 @@
  
     require_once('Config.php');
     require_once('ZZSql.php');
+    require_once('Authentication.php');
     
     // $TODO: we need to consider this attribuate later after understanding
     // how many requests against the same userId and how frequently we need 
@@ -10,14 +11,6 @@
 
     $zzsql = new ZZSql();
     $ret = new WSC();
-        
-    //get the userId parameter from URL
-    $userId = $zzsql->escapeInput($_COOKIE["userId"]);   
-    
-    if (empty($userId))
-    {
-        die($ret->wrapError("Please logon first before triggering this request."));
-    }
     
     $sql = "SELECT bookOwn.id, bookOwn.bookId, book.bookName,book.img,book.author,book.isbn,book.pages,book.publisher,book.price,book.description
                 FROM bookOwn

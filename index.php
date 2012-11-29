@@ -1,4 +1,5 @@
 <?php
+	// All authentication code should go this way
     require_once('Authentication.php');
 ?>
 

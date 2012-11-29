@@ -866,6 +866,9 @@
 						// Cannot use "this", since this points to the caller.
 						self.refresh(result.output);
 					}
+					else if (result.status == 2) {
+						window.location = result.output;
+					}
 					else {
 						//$TODO: do nice error popup later
 						alert(result.output);
@@ -955,6 +958,9 @@
 											$("#searchDoubanBookList li").remove();
 											$.growlUI('操作已成功', '该图书已添加至您的书单！'); 
 										}
+										else if (result.status == 2) {
+											window.location = result.output;
+										}
 										else {
 											alert (result.output);
 										}
@@ -1021,11 +1027,11 @@
    		$.blockUI();
 
 		// All requests to BookShare service must enforce the following cookie
-		// $TODO: I added this code for testing purpose which should be removed in production environment
-		var userId = $.cookie('userId'); 
-		if (userId === null) {
-			$.cookie('userId', '1', { expires: 30 });
-		}
+		// $NOTE: this code is for testing purpose.
+		// var userId = $.cookie('userId'); 
+		// if (userId === null) {
+		//	$.cookie('userId', '1', { expires: 30 });
+		// }
 	})
 	.ajaxStop(function() {
 		var endTime = new Date();
